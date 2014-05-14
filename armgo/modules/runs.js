@@ -142,6 +142,7 @@ function RUNS(){
 		eid("btn_start").disabled = true;
 		state.init(Mission);
 		arm.running = true;
+		costime = 0;
 		this.run(0,0);
 	}
 	this.finish = function(){

@@ -28,7 +28,7 @@ function drawcell(x,y,v){
 }
 
 function drawBg(){
-	cxt.fillStyle = color[3] ;
+	cxt.fillStyle = color[0] ;
 	cxt.fillRect(0,0,c.width,c.height);
 }
 
@@ -62,7 +62,7 @@ function drawGoal(){
 	}
 }
 
-function flashMap(x){
+function flashMap(x){		//	渲染图像
 	costime ++;
 	ns.innerHTML = "Time: " + Math.floor(costime * conf.Fz / 1000) + "s";
 //	console.log(Date());
@@ -101,7 +101,6 @@ function message(t){
 }
 
 function initLevel(v){
-	costime = 0;
 	Mission = v;
 	state.init(v);
 	arm.init();

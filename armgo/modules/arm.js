@@ -56,10 +56,8 @@ function ARM(){
 				log("[Back] " + x + ',' + y);
 				runs.stack.length--;
 				this.done(x,y);
-			//	runs.run(x,y+1);
 			}else{
-				// finish
-				runs.finish();
+				runs.finish();			// finish
 			}
 		}
 	}
