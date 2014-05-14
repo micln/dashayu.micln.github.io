@@ -97,13 +97,15 @@ function RUNS(){
 	this.hide = function(){
 		this.obj.style.display = 'none';
 	}
-	this.run = function(v,i){
-		if ( !arm.running ) return;
-		if (this.tasks[v][i] == 0 ){
-			runs.finish();
+	this.run = function(v,i){			//	运行(v,i)
+		log("[Try ] " + v + "," + i);
+		if ( !arm.running ) return;			
+		if (this.tasks[v][i] == 0 ){		// 没有要执行的指令
+		//	runs.finish();
+			return;
 		}
 		ns.innerHTML = v + ',' + i ;
-		if ( this.ifs[v][i] != 0 && this.ifs[v][i]!=arm.hand ){
+		if ( this.ifs[v][i] != 0 && this.ifs[v][i]!=arm.hand ){	//	条件不满足时跳过这块
 			arm.done(v,i);
 			return;
 		}

@@ -42,17 +42,21 @@ function ARM(){
 		arm.init();
 		state.draw();
 	}
-	this.done = function(v,i){
+	this.done = function(v,i){					// 第(v,i)块指令执行完毕
+		log("[Done] " + v + ',' + i);
 		if ( v == undefined ) return ;
 		if ( runs.tasks[v][i+1] != 0 ) {
-			runs.run(v,i+1);
-		}else{
+			runs.run(v,i+1);				// 执行(v,i+1)
+		}else{								// 检查堆栈
 			var l = runs.stack.length-1;
+			console.log(l);
 			if ( l >= 0 ){
 				var x = runs.stack[l][0];
 				var y = runs.stack[l][1];
+				log("[Back] " + x + ',' + y);
 				runs.stack.length--;
-				runs.run(x,y+1);
+				this.done(x,y);
+			//	runs.run(x,y+1);
 			}else{
 				// finish
 				runs.finish();
@@ -62,17 +66,16 @@ function ARM(){
 	this.died = function(){
 		alert("Destroyed!\n通过下方按钮“重新开始”")
 	}
-	this.right = function(v,ii){
+	this.right = function(v,ii){		
 		var i = 6;
 		while ( i>0 && state.box[this.r-1][i-1] != 0 ) i--;
 		this.goRight(state.x+conf.cell.x*i,v,ii);
 	}
-	this.left = function(v,i){
+	this.left = function(v,i){			// 带入参数表示正在执行第(v,i)块指令
 		if (!this.running) return;
 		this.x -= this.speed ;
 		if ( this.x > this.leftz ){
 			setTimeout('arm.left('+v+','+i +')',conf.Fz);
-			//sleep(conf.Fz);this.left();
 		}else {
 			this.done(v,i);
 		}
@@ -92,7 +95,7 @@ function ARM(){
 			this.done(v,i);
 		}
 	}
-	this.down = function(v,i){
+	this.down = function(v,i){				
 		if (!this.running) return;
 		if ( this.r == 6 ) return ;
 		this.y += this.speed ;
