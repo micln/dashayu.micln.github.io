@@ -49,7 +49,6 @@ function ARM(){
 			runs.run(v,i+1);				// 执行(v,i+1)
 		}else{								// 检查堆栈
 			var l = runs.stack.length-1;
-			console.log(l);
 			if ( l >= 0 ){
 				var x = runs.stack[l][0];
 				var y = runs.stack[l][1];
@@ -62,11 +61,16 @@ function ARM(){
 		}
 	}
 	this.died = function(){
-		alert("Destroyed!\n通过下方按钮“重新开始”")
+		message("Destroyed!<hr>通过下方按钮“重新开始”")
 	}
-	this.right = function(v,ii){		
+	this.right = function(v,ii){
+		if (!this.running) return;
 		var i = 6;
 		while ( i>0 && state.box[this.r-1][i-1] != 0 ) i--;
+		if ( i==0 && this.hand != 0) {
+			this.died();
+			return;
+		}
 		this.goRight(state.x+conf.cell.x*i,v,ii);
 	}
 	this.left = function(v,i){			// 带入参数表示正在执行第(v,i)块指令
@@ -95,7 +99,10 @@ function ARM(){
 	}
 	this.down = function(v,i){				
 		if (!this.running) return;
-		if ( this.r == 6 ) return ;
+		if ( this.r == 6 ) {
+			this.died();
+			return ;
+		}
 		this.y += this.speed ;
 		if ( this.y < ( state.y+conf.cell.y*(this.r*2))) {
 			setTimeout('arm.down('+v+','+i+')',conf.Fz);
@@ -106,7 +113,6 @@ function ARM(){
 		}
 	}
 	this.goRight = function(x,v,ii){
-		if (!this.running) return;
 		this.x 	+= this.speed ;
 		if ( this.x + (this.hand > 0)*conf.cell.x  < x ){
 			setTimeout('arm.goRight('+x+','+v+','+ii+')',conf.Fz);

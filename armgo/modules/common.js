@@ -6,15 +6,21 @@ var ctime;				// arm Go!
 var Mission;			// Mission Canvas Object
 var ns = eid("ns");		// debug message
 var costime;
+var coststep;
 
 //	全局函数；公共组件
 
 function checkAns(){
 	if ( state.box.toString() == Goal[Mission].toString()){
-		//alert("WIN");
-		message("WIN<hr>"+costime*conf.Fz/1000+"s");
+		var costcope = 0;
+		for ( i=0;i<4;i++){
+			for (j=0;j<8;j++){
+				costcope += ( runs.tasks[i][j] != 0 ) + (runs.ifs[i][j] != 0);
+			}
+		}
+		score = 1 + ( coststep <= grade[Mission][1] ) + (costcope <= grade[Mission][0]);
+		message("WIN<hr>"+costime*conf.Fz/1000+"s<br>"+coststep+" steps<br>"+costcope+" instructions<br>Score: " + score);
 		runs.finish();
-	//	missionList.show();
 	}
 }
 
@@ -102,6 +108,7 @@ function message(t){
 
 function initLevel(v){
 	Mission = v;
+	costime = 0;
 	state.init(v);
 	arm.init();
 	runs.init();
