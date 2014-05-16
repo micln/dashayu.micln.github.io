@@ -12,26 +12,36 @@
 <input style="position:absolute; left: 85px; top: 15px; width: 60px; height: 76px;"type="button" value="->" onClick="arm.right()">
 <input style="position:absolute; left: 14px; top: 15px; width: 70px; height: 37px;" type="button" value="UP" onClick="arm.up()">
 	</div>
-    <span id="ns"></span>
-<br/>
 
 
 <!--  main GAME  -->
 	<div id="game">
+		<h2>欢迎来到 ArmGo ！</h2>
+		<p>首先，请【点击主屏幕】可以选择关卡，进入游戏之后可查看帮助</p>
 		<div id="msgbox">
 			<a onclick="document.getElementById('msgbox').style.display = 'none'">OK</a>
 			<div></div>
 		</div>
+		<div id='helptxt'>
+			<p>游戏界面分为三部分：（目标状态）（当前状态）（操作区）<br>你的任务是通过修改右侧的指令来使得机械手把初始状态变换为目标状态</p>
+			<h3>操作指南</h3>
+			<p>在右侧</p>
+		</div>
 		<canvas id="canvas" width="900px" height="480px"></canvas>
 		<div id="runs"></div>
-		<div id="toolslc" ></div>
-		<div id="toolslcifs" ></div>
-		<div id="controlBar">
-			<input id="" name="" type="button" onClick="showhelp();" value="查看帮助 (Help)">
-			<input id="btn_goMission" name="" type="button" onClick="missionList.show();" value="关卡选择 (Levels)">
-			<input id="btn_Refresh" name="" type="button" onClick="runs.stop();initLevel(Mission);" value="重新开始 (Refresh)">
-			<input id="btn_start" name="" type="button" onClick="runs.start();" value="启动 (Let's Go!)">
+		<div id="toolslc">
+			选择指令<hr>
 		</div>
+		<div id="toolslcifs" ></div>
+		<div id="controlBar" >
+		<!--	<input id="" style='display:initial' name="" type="button" onClick="showhelp();" value="查看帮助 (Help)"> -->
+			<input id="btn_goMission" name="" type="button" onClick="missionList.show();" value="关卡选择">
+			<input id="btn_Refresh" name="" type="button" onClick="initLevel(Mission);" value="重新开始">
+			<input id="btn_start" name="" type="button" onClick="runs.start();" value="Go!">
+			<input id="btn_save" name="" type="button" onClick="runs.store.save();" value="Save">
+			<input id="btn_load" name="" type="button" onClick="runs.store.load();" value="Load">
+		</div>
+		
 		
 
 		<script type="text/javascript" src="modules/maps.js"></script>
