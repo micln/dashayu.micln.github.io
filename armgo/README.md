@@ -1,13 +1,18 @@
 ArmGo
 =====
 
-a game from iPad...
+A game for program learner
 
-programming the copes to leading the arm to move the cells, achieve the goal state and you can get your scores.
+Programming the copes to leading the arm to move the cells, achieve the goal state and you can get your scores.
 
-testing page : http://micln.github.io/armgo/
+Testing page : http://micln.github.io/armgo/
 
-##Author
+###Author
 
-- [micln](https://github.com/micln) zhrlnt[X]gmail.com
+[micln](https://github.com/micln) zhrlnt[X]gmail.com
+
+####Thanks My Friends
+
 - [pokerG](https://github.com/pokerG) pokerfacehlg[X]gmail.com
+- Guopenghua
+- Xuhuajie
