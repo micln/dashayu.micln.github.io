@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>http://sample.com/</loc>
+		<loc>http://dashayu.tk/</loc>
 	</url>
 	<url>
-		<loc>http://sample.com/default/test/</loc>
+		<loc>http://dashayu.tk/Boring Notes/hello%2C-gor/</loc>
 		<lastmod>2014-06-30</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-		<loc>http://sample.com/2013/new-born.html</loc>
+		<loc>http://dashayu.tk/2013/new-born.html</loc>
 		<lastmod>2013-02-08</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>

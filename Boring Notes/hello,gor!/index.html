@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>你的第一篇博客</title>
+    <title>hello,gor!</title>
   
     <meta name="author" content="张慧仁">
 
@@ -71,85 +71,53 @@
 
       <div class="content">
         <div class="page-header">
-  <h1>你的第一篇博客 </h1>
+  <h1>hello,gor! </h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <h3>感谢你使用Gor编写博客</h3>
+    <p>既然来了，就说说为什么来吧。</p>
 
-<h3>本文位于 posts/first-blog.md , 你可以任意删掉,修改这个文件</h3>
+<p>今天是个比较兴奋地日子，因为我的新显示器（<a href="http://item.jd.com/933422.html">AOC LV242WEM</a>）终于到了，一下子就喜欢上了新屏幕，敞亮、饱和、逼真、鲜艳，反正就是棒极了！</p>
 
-<hr />
+<p>稀里糊涂就想试试拿 gor 在 github.io 上搭个博客了，说实话阿里的服务器即将到期没有资本也木有必要去续费。github.io 却看起来可以永存。</p>
 
-<p>文件开头是当前文章的元数据</p>
+<h2><a style="display: block;" name="使用几分钟后" href="#使用几分钟后"></a>使用几分钟后</h2>
 
-<ol>
-<li>date为自动生成, 当然,你可以修改,这是你的自由</li>
-<li>permalink 可以是固定地址,也可以由gor为你自动生成</li>
-<li>categories 就是分类, 可以多个</li>
-<li>tags 同理,多个标签也是很常见的</li>
-</ol>
+<p>从 gor 的使用到github.io，到各种配置，官网都有很详细的说明我就不再赘述了。也可以看我的<a href="2013/new-born.html">第一篇</a></p>
 
-<p>请确保文件使用UTF8 without BOM编码</p>
+<h3>DISQUS广告</h3>
 
-<h2>你可以通过执行下面的语句来新建一篇博客:</h2>
+<p>拿到这个博客你首先得干的第一件事应该就是去除评论框该死的广告！在<code>widgets/comments/config.yml</code>里，把<code>short_name</code>改成你自己的，如果没有怎么办？可以选择去建一个（也可以有一个快速去广告的办法就是乱加几个字母，这样首先就没有广告了），建的时候有一大堆对勾要选注意其中有一个<code>发现</code>，果断去掉。然后更新<code>short_name</code>就ok了</p>
 
-<pre><code>gor post 文章标题
-</code></pre>
+<h3>换成多说评论框</h3>
 
-<h2>编译你的博客,并预览之</h2>
+<p>多说是在国内用的还算比较多的一个，所以把disqus替换成多说也是个很好的想法，置于怎么替换，下次再说。。</p>
 
-<pre><code>gor compile #编译
-gor http
-</code></pre>
+<h2><a style="display: block;" name="题外话" href="#题外话"></a>题外话</h2>
 
-<p>然后打开你的浏览器,访问 <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> 来预览</p>
+<h3>MacDown</h3>
 
-<h2>你将使用Markdown来编写博客</h2>
+<p>这是一个看起来特别棒的markdown编辑器，堪比<code>CMD Markdown</code>但是看起来不是偏离Markdown那么离谱。但是只支持Mac平台。</p>
 
-<p><a href="http://wowubuntu.com/markdown/">Markdown 语法中文版</a> 能让你快速入门其语法</p>
+<p>好了该说说这个博客要干嘛了。由于在github上，所以考虑还是技术为主吧。如果搞得还行，把抽风系列挂过来也不错~</p>
 
-<p>相信<a href="http://markdownpad.com">MarkdownPad</a>或<a href="http://code.google.com/p/liteide/">liteide</a>会是你的编写博客的好帮手</p>
-
-<h2>如果你打算部署到github的pages上</h2>
-
-<ol>
-<li>申请github帐户</li>
-<li>新建一个库 username.github.com 即你的用户名命名的地址</li>
-<li>将compiled目录,作为根路径,提交上去github.com上</li>
-<li>稍等几分钟, 你即可通过 <a href="http://username.github.com">http://username.github.com</a> 访问到</li>
-</ol>
-
-<h2>附上git教程 <a href="http://gitbook.liuhui998.com/">GitBook中文版</a></h2>
-
-<p>一般来说,你只需要几个简单的git命令就足以应付大部分需求(仅示例)</p>
-
-<pre><code>git clone git://github.com/wendal/wendal.net.git
-git add -A
-git commit -m &quot;...&quot;
-git pull
-git push
-</code></pre>
-
-<h2>用gor编写博客将会是一件很开心的事,如果有任何意见或建议,欢迎到 <a href="http://github.com/wendal/gor">gor的官网</a> 提交issue</h2>
-
-<h1>祝你使用愉快</h1>
+<p>就这样了，还得睡觉。</p>
 
     <hr>
     <div class="pagination">
       <ul>
         <ul>
           
-            <li class="prev"><a href="/Boring Notes/hello%2C-gor/" title="hello, gor">&larr; Previous</a></li>
           
+            <li class="prev disabled"><a>&larr; Previous</a></li>
           
 
             <li><a href="/archive">Archive</a></li>
 
           
+            <li class="next"><a href="/2013/new-born.html" title="你的第一篇博客">Next &rarr;</a></li>
           
-            <li class="next disabled"><a>Next &rarr;</a>
           
         </ul>
       </ul>
@@ -174,7 +142,7 @@ git push
   
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>2013-02-08</span></div>
+    <div class="date"><span>2014-06-30</span></div>
     <br>
     <h4>Categories</h4>
     <ul class="tag_box">
@@ -189,7 +157,15 @@ git push
     <ul class="tag_box">
     
       <li>
-  <a href="/tags/#Gor-ref">Gor <span>1</span></a>
+  <a href="/tags/#gor-ref">gor <span>1</span></a>
+</li>
+    
+      <li>
+  <a href="/tags/#Disqus-ref">Disqus <span>1</span></a>
+</li>
+    
+      <li>
+  <a href="/tags/#MacDown-ref">MacDown <span>1</span></a>
 </li>
     
     </ul>
@@ -198,9 +174,12 @@ git push
 
       </div>
 
-      <footer> 
-        <p>&copy; 张慧仁 2013. 
-        Powered by <a href="http://github.com/wendal/gor" target="_blank" title="Gor -- Fast Blog">Gor</a></p>
+      <footer>
+        <p>&copy; 张慧仁 2013 
+          with help from <a href="http://github.com/wendal/gor" target="_blank" title="Gor -- Fast Blog">Gor</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+		  and Idea from <a href="http://ruhoh.com" target="_blank" title="The Definitive Technical Blogging Framework">ruhoh</a>
+        </p>
       </footer>
 
     </div> <!-- /container -->
