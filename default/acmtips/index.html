@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0">
+    <title>acmtips</title>
+  
+    <meta name="author" content="张慧仁">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/blue/stylesheets/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/blue/stylesheets/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/blue/widgets/google_prettify/stylesheets/twitter-bootstrap.css" type="text/css" rel="stylesheet" media="all">
+ 
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">zhr&#39;sTech</a>
+          <ul class="nav">
+            
+              
+
+
+  <li><a href="/archive">Archive</a></li>
+
+
+            
+              
+
+
+  <li><a href="/tags">Tags</a></li>
+
+
+            
+              
+
+
+  <li><a href="/categories">Categories</a></li>
+
+
+            
+              
+
+
+  <li><a href="/about">About Me</a></li>
+
+
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+  <h1><span>acmtips </span><span class='date'>2014-10-08</span></h1>
+  
+</div>
+
+<div class="row" style="margin-left:0px;padding: 20px;">
+  <div class="">
+    <div>
+
+    <div id='Directory'></div>
+    <script>
+    
+        var tt = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+        var tq = ["", "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨", "⑩"];
+
+        window.onload = function(){
+            return;
+            h1 = document.querySelectorAll("h1");           h2 = document.querySelectorAll("h2");           h3 = document.querySelectorAll("h3");           h4 = document.querySelectorAll("h4");
+            
+            var txt = "<h2> Directory </h2>";
+            txt += "<pre>"
+            for ( t1=0; t1<h1.length; t1++ ){
+                txt += "<h3>" + (tt[t1+1]) + "." + h1[t1].innerHTML + "</h3>";
+                for ( t2=0; t2<h2.length; t2++ ) if (h2[t2].offsetTop > h1[t1].offsetTop && ( t1==h1.length-1 ||  h2[t2].offsetTop < h1[t1+1].offsetTop )) {
+                    txt += "<h4>   " + (t2+1) + ". " + h2[t2].innerHTML + "</h4>";
+                    for (t3=0; t3<h3.length; t3++ ) if (h3[t3].offsetTop > h2[t2].offsetTop && ( t2==h2.length-1 ||  h3[t3].offsetTop < h2[t2+1].offsetTop )) {
+                        txt += "<h5>       " + (t3+1) + ") " + h3[t3].innerHTML + "</h5>";
+                        for ( t4=0; t4<h4.length; t4++ ) if (h4[t4].offsetTop > h3[t3].offsetTop && ( t3==h3.length-1 ||  h4[t4].offsetTop < h3[t3+1].offsetTop )) {
+                            txt += "         | " + h4[t4].innerHTML + "\n";
+                        }
+                    }
+                }
+            }
+            txt += "</pre>";
+            document.getElementById("Directory").innerHTML = txt;
+        }
+    </script>
+
+</div>
+
+<h1><a style="display: block;" name="acm语法基础" href="#acm语法基础"></a>ACM语法基础</h1>
+
+<h2><a style="display: block;" name="c/cpp不常用的知识点" href="#c/cpp不常用的知识点"></a>C/CPP不常用的知识点</h2>
+
+<h3>字符串拆分</h3>
+
+<pre><code class="cpp">char ss[] = &quot;(1,2,3,4)&quot;;
+char *p = strtok(ss, &quot;(,)&quot;);
+for (int i(1); i&lt;=n; i++) {
+    sscanf(p, &quot;%d&quot;, &amp;k);
+    p = strtok(NULL, &quot;,)&quot;);
+}
+</code></pre>
+
+<h3>gets 、fgets 、getline</h3>
+
+<ul>
+<li>gets 会过滤行首空格（不含<code>\n</code>）</li>
+<li>fgets 完全读入，把<code>\n</code>吃进字符串末位，与scanf混用时容易出错</li>
+<li>getline 自动跳转下一行，不会过滤行首空格</li>
+</ul>
+
+<h2><a style="display: block;" name="java快速读写" href="#java快速读写"></a>Java快速读写</h2>
+
+<h3>例题</h3>
+
+<h4>@ hdoj 5047 Sawtooth</h4>
+
+<p>读入一个大数，按照特定公式计算结果。</p>
+
+<pre><code class="cpp">import java.math.*;  
+import java.util.*;  
+import java.io.*;  
+  
+public class Main {  
+    public static void main(String[] args) throws Exception {  
+          
+        BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));    
+        BufferedWriter cout = new BufferedWriter(new OutputStreamWriter(System.out));  
+          
+        BigInteger n, ans, a1, a2, a7, a8;  
+        a1 = BigInteger.valueOf(1);  
+        a2 = BigInteger.valueOf(2);  
+        a7 = BigInteger.valueOf(7);  
+        a8 = BigInteger.valueOf(8);  
+          
+        String ss = cin.readLine();  
+        int T = Integer.parseInt(ss);  
+          
+        for(int i=1; i&lt;=T; i++){  
+            ss = cin.readLine();  
+            n = new BigInteger( ss );  
+            cout.write( &quot;Case #&quot;+i+&quot;: &quot; );  
+              
+            ans = n.multiply(n).multiply(a8);  
+            ans = ans.subtract(a7.multiply(n));  
+            ans = ans.add(a1);  
+              
+            cout.write( ans.toString() );  
+            cout.newLine();  
+            cout.flush();  
+        }  
+  
+    }  
+}  
+</code></pre>
+
+<h1><a style="display: block;" name="模拟易错点" href="#模拟易错点"></a>模拟易错点</h1>
+
+<h2><a style="display: block;" name="a" href="#a"></a>a</h2>
+
+<h3>b</h3>
+
+<h4>@ POJ 1017 Packets | 装完大包装小包</h4>
+
+<pre><code class="cpp">/*
+6种物品，体积分别为1*1 2*2 ... 6*6 。每种数量有20000
+包裹体积为6*6，问装满所有的物品至少需要多少个包裹。
+solution：
+从大到小装，有缝隙了依次选小的。
+*/
+#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+int n=6,t;
+int a[8];
+int push(int t,int i, int num){             // 把num个a[i]放进容量为t的箱子里，返回箱子容量
+    if ( num &gt; a[i]) num = a[i];
+    t -= i*i * num;
+    a[i] -= num;
+    return t;
+}
+int main(){
+    for(;;){
+        int ts = 0;
+        for ( int i(1);i&lt;=n;i++){
+            cin &gt;&gt; a[i];
+            ts+=a[i];
+        }
+        if (!ts) break;
+
+        int s =a[6]+a[5]+a[4];
+
+        // a5
+        if (a[5]*11 &gt;= a[1]) a[1] = 0;
+        else a[1] -= a[5]*11;
+
+        // a4
+        for ( int i(1);i&lt;=a[4];i++){
+            t = push(20,2,5);
+            if (t) t = push(t,1,t);
+        }
+
+        // a3
+        s += a[3] / 4;      // 整装3
+        a[3] %= 4;
+        if (a[3]){                                  //  剩下的空间分情况装2
+            t = 36 - a[3]*9;
+            if ( a[3] == 1 ) t = push(t,2,5);
+            if ( a[3] == 2 ) t = push(t,2,3);
+            if ( a[3] == 3 ) t = push(t,2,1);
+            if (t) t = push(t,1,t);                     //  剩下的空间都装1
+            s++;
+        }
+
+        // a2
+        s += a[2] / 9;
+        a[2] %= 9;
+        if (a[2]){
+            t = 36 - a[2] * 4;
+            t = push(t,1,t);
+            s++;
+        }
+
+        // a1
+        s += a[1] / 36;
+        a[1] %= 36;
+        if (a[1]) s++;
+
+        cout &lt;&lt; s &lt;&lt; endl;
+    }
+    return 0;
+}
+
+</code></pre>
+
+<h4>@ USACO 1.4.3 The Clocks</h4>
+
+<pre><code class="cpp">/*
+根据九个表和九个操作的关系，得出下列关系表：
+先列一下钟表与矩阵的关系图：
+Ci = C[i] / 3; 
+clocks  operates
+1   1 2 4       ( C1 + p1 + p2 + p4 ) % 4 == 0
+2   1 2 3 5     ( C2 + p1 + p2 + p3 + p5 ) % 4 == 0 
+3   2 3 6       ...
+4   1 4 5 7     ...
+5   1 3 5 7 9   ...
+6   3 5 6 9 
+7   4 7 8
+8   5 7 8 9
+9   6 8 9
+
+把上面的关系式反过来，就能在已知 c[i] 通过枚举部分 pi 求出其它 pi 
+我枚举的是123三个操作，然后剩下6个操作就可以就确定了。
+*/
+#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+int c[11];
+int cal(int a, int b, int c){
+    int t =  - a - b - c;
+    while ( t &lt; 0 ) t += 4;
+    return t;
+}
+int cal(int a, int b, int c, int d){
+    int t =  - a - b - c - d;
+    while ( t &lt; 0 ) t += 4;
+    return t;
+}
+int main(){
+    freopen(&quot;clocks.in&quot;,&quot;r&quot;,stdin);
+    freopen(&quot;clocks.out&quot;,&quot;w&quot;,stdout);
+    for (int i(1);i&lt;=9;i++) {
+        cin &gt;&gt; c[i];
+        c[i] /= 3;
+    }
+    int p[11];
+    bool found = false;
+    for ( p[1] = 0; p[1] &lt; 4; p[1]++ ){
+        for ( p[2] = 0; p[2] &lt; 4; p[2]++ ){
+            for ( p[3] = 0; p[3] &lt; 4; p[3]++ ){
+                p[4] = cal(c[1], p[1], p[2]);
+                p[5] = cal(c[2], p[1], p[2], p[3]);
+                p[6] = cal(c[3], p[2], p[3]);
+                p[7] = cal(c[4], p[1], p[4], p[5]);
+                p[8] = cal(c[7], p[4], p[7]);
+                p[9] = cal(c[9], p[6], p[8]);
+                if (((c[5] + p[1] + p[3] + p[5] + p[7] + p[9]) % 4 == 0) &amp;&amp;
+                    ((c[8] + p[5] + p[7] + p[8] + p[9] ) % 4 == 0) &amp;&amp;
+                    ((c[6] + p[3] + p[5] + p[6] + p[9] ) % 4 == 0 )){
+                    found = 1;
+                    break;
+                }
+                if ( found ) break;
+            }
+            if ( found ) break;
+        }
+        if ( found ) break;
+    }
+    int i = 1;
+    while ( p[i] == 0 ) i++;
+    printf(&quot;%d&quot;,i);
+    p[i--]--;
+    while ( ++i &lt;= 9 ) while ( p[i]-- ) printf(&quot; %d&quot;,i);
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h1><a style="display: block;" name="搜索" href="#搜索"></a>搜索</h1>
+
+<h2><a style="display: block;" name="多状态标记" href="#多状态标记"></a>多状态标记</h2>
+
+<h4>@ HDU 5024 Wang Xifeng&rsquo;s Little Plot 广州区域赛</h4>
+
+<pre><code class="cpp">/*
+题意：找到一个最长的L型
+思路：把L拆成两个直线，枚举所有的情况，记忆化搜索
+*/
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxn = 110;
+
+int dx[8] = {0, 0, 1, -1, 1, 1, -1, -1};
+int dy[8] = {1, -1, 0, 0, 1, -1, 1, -1};
+int n, f[maxn][maxn][8];
+char g[maxn][maxn];
+
+int dfs(int x, int y, int dir) {
+    if (f[x][y][dir] != -1)
+        return f[x][y][dir];
+
+    if (g[x+dx[dir]][y+dy[dir]] == '.')
+        return f[x][y][dir] = 1 + dfs(x+dx[dir], y+dy[dir], dir);
+    else return f[x][y][dir] = 1;
+}
+
+int main() {
+    while (scanf(&quot;%d&quot;, &amp;n) != EOF &amp;&amp; n) {
+        memset(f, -1, sizeof(f));
+        memset(g, 0, sizeof(g));
+        for (int i = 1; i &lt;= n; i++)
+            scanf(&quot;%s&quot;, g[i]+1);
+
+        int ans = -1;
+        for (int i = 1; i &lt;= n; i++)
+            for (int j = 1; j &lt;= n; j++) 
+                if (g[i][j] == '.') {
+                    ans = max(ans, dfs(i, j, 0) + dfs(i, j, 2) - 1);
+                    ans = max(ans, dfs(i, j, 1) + dfs(i, j, 2) - 1);
+                    ans = max(ans, dfs(i, j, 1) + dfs(i, j, 3) - 1);
+                    ans = max(ans, dfs(i, j, 0) + dfs(i, j, 3) - 1);
+                    ans = max(ans, dfs(i, j, 4) + dfs(i, j, 5) - 1);
+                    ans = max(ans, dfs(i, j, 4) + dfs(i, j, 6) - 1);
+                    ans = max(ans, dfs(i, j, 7) + dfs(i, j, 5) - 1);
+                    ans = max(ans, dfs(i, j, 7) + dfs(i, j, 6) - 1);
+                }
+        printf(&quot;%d\n&quot;, ans);
+    }   
+    return 0;
+}
+</code></pre>
+
+<h4>@ HDU 5025 Saving Tang Monk</h4>
+
+<p>题意：给一个地图，孙悟空(K)救唐僧(T)，地图中&rsquo;S&rsquo;表示蛇，第一次到这要杀死蛇（蛇最多5条），多花费一分钟，&rsquo;1&rsquo;~&rsquo;m&rsquo;表示m个钥匙(m&lt;=9)，孙悟空要依次拿到这m个钥匙，然后才能去救唐僧，集齐m个钥匙之前可以经过唐僧，集齐x个钥匙以前可以经过x+1,x+2..个钥匙，问最少多少步救到唐僧。</p>
+
+<pre><code class="cpp">/*
+本题主要是每一条蛇状态的记录，使用状态压缩，将每一条蛇的状态用二进制位记录下来，1代表活，0代表死。
+使用vis四维数组记录每一点走过的状态，x,y分别表示位置，k 钥匙，s 表示蛇的状态，b 表示步数。
+*/
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
+#include &lt;string&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+#include &lt;map&gt;
+const int inf=0xfffffff;
+typedef long long ll;
+using namespace std;
+
+char m[105][105];
+int vis[105][105][15][40];
+int dx[] = {0, 0, 1, -1}, dy[] = {1, -1, 0, 0};
+int sx, sy, sn, N, M;
+struct node
+{
+    int x, y, k, s, b;
+};
+queue&lt;node&gt; q;
+int ans;
+
+void bfs()
+{
+    node now;
+    q.push((node){sx, sy, 0, 0, 0});
+    while(!q.empty()){
+        now = q.front();
+        q.pop();
+        int x = now.x, y = now.y, k = now.k, s = now.s, b = now.b;
+        if(k == M &amp;&amp; m[x][y] == 'T'){
+            ans = min(ans, b);
+        }
+
+        if(vis[x][y][k][s] != 0) continue;
+        vis[x][y][k][s] = 1;
+
+        for(int i = 0; i &lt; 4; i ++){
+            int nx = x + dx[i], ny = y + dy[i];
+            int snn = m[nx][ny] - 'A';
+
+            if(snn &gt;= 0 &amp;&amp; snn &lt; sn){
+                if((1&lt;&lt;snn) &amp; s) q.push((node) {nx, ny, k, s, b + 1});
+                else q.push((node) {nx, ny, k,  (1&lt;&lt;snn) | s, b + 2});
+            }
+            else{
+                if(m[nx][ny] == k + '1'){
+                    q.push((node) {nx, ny, k + 1, s, b + 1});
+                }
+                else if(nx &gt; 0 &amp;&amp; nx &lt;= N &amp;&amp; ny &gt; 0 &amp;&amp; ny &lt;= N &amp;&amp; m[nx][ny] != '#')
+                    q.push((node) {nx, ny, k, s, b + 1});
+            }
+        }
+    }
+}
+int main()
+{
+    //freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+    while(~scanf(&quot;%d %d&quot;, &amp;N, &amp;M)){
+        if(N == 0 &amp;&amp; M == 0) break;
+        memset(m, 0, sizeof(m));
+        memset(vis, 0, sizeof(vis));
+        sn = 0;
+        for(int i = 1; i &lt;= N; i ++){
+            scanf(&quot;%s&quot;, m[i] + 1);
+            for(int j = 1; j &lt;= N; j ++){
+                if(m[i][j] == 'K'){
+                    sx = i;
+                    sy = j;
+                }
+                if(m[i][j] == 'S'){
+                    m[i][j] = 'A' + sn;
+                    sn ++;
+                }
+            }
+        }
+        ans = inf;
+        bfs();
+        if(ans == inf) printf(&quot;impossible\n&quot;);
+        else printf(&quot;%d\n&quot;, ans);
+    }
+    return 0;
+}
+
+</code></pre>
+
+<pre><code class="cpp">/*
+解法：BFS，每个节点维护四个值：
+x,y ： 当前坐标
+key ：已经集齐了key个钥匙
+step：已经走了多少步
+S ：   蛇的访问状态 (2^5的数表示，某位为1表示已经杀过了)
+然后把唐僧看做钥匙m+1，再加点优化：
+为了避免超时，用一个全局的dis[x][y][key][S] 表示到(x,y),已经集齐到key个钥匙，蛇的访问状态为S时的最小步数，如果BFS扩展的时候，当前状态的步数&gt;=dis[当前状态]，那么就不再扩展下去了。
+BFS中的逻辑就很简单了，看代码吧。
+最后，枚举蛇的状态S，取dis[x][y][m+1][S]的最小值即为最小步数。
+*/
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#define INF 0x3f3f3f3f
+using namespace std;
+#define N 1000007
+
+int dis[104][104][12][33],Stot,M;
+struct node
+{
+    int x,y,key,step,S;
+};
+int dx[4] = {0,0,1,-1};
+int dy[4] = {1,-1,0,0};
+map&lt;pair&lt;int,int&gt;,int&gt; snake;
+char ss[105][105];
+int n,m;
+
+bool OK(int nx,int ny)
+{
+    if(nx &lt; n &amp;&amp; nx &gt;= 0 &amp;&amp; ny &lt; n &amp;&amp; ny &gt;= 0 &amp;&amp; ss[nx][ny] != '#')
+        return true;
+    return false;
+}
+
+void bfs(node s)
+{
+    queue&lt;node&gt; que;
+    que.push(s);
+    while(!que.empty())
+    {
+        node now = que.front();
+        que.pop();
+        int nx = now.x, ny = now.y;
+        int key = now.key, step = now.step;
+        int S = now.S;
+        node tmp;
+        for(int k=0;k&lt;4;k++)
+        {
+            int kx = nx + dx[k];
+            int ky = ny + dy[k];
+            if(!OK(kx,ky)) continue;
+            tmp.x = kx,tmp.y = ky;
+            if(ss[kx][ky] == 'S')                    //蛇
+            {
+                int ind = snake[make_pair(kx,ky)];   //是第几条蛇
+                tmp.key = key;
+                if(S &amp; (1&lt;&lt;(ind-1)))                 //如果已经杀死
+                {
+                    tmp.S = S;
+                    tmp.step = step+1;
+                } 
+                else                                 //否则要杀
+                {
+                    tmp.S = S|(1&lt;&lt;(ind-1));
+                    tmp.step = step+2;
+                }
+                if(tmp.step &lt; dis[kx][ky][tmp.key][tmp.S])
+                {
+                    dis[kx][ky][tmp.key][tmp.S] = tmp.step;
+                    que.push(tmp);
+                }
+            }
+            else if(ss[kx][ky] &gt;= '1' &amp;&amp; ss[kx][ky] &lt;= '9')  //钥匙点
+            {
+                int num = ss[kx][ky] - '0';
+                tmp.step = step+1;
+                tmp.S = S;
+                if(num == key+1)                             //正好是要拿的那个
+                    tmp.key = key+1;
+                else
+                    tmp.key = key;
+                if(tmp.step &lt; dis[kx][ky][tmp.key][tmp.S])
+                {
+                    dis[kx][ky][tmp.key][tmp.S] = tmp.step;
+                    que.push(tmp);
+                }
+            }
+            else if(ss[kx][ky] == '$')   //唐僧这个点
+            {
+                tmp.key = key;
+                tmp.S = S;
+                tmp.step = step+1;
+                if(M == key+1)           //已经集齐了所有钥匙，不再扩展，更新dis即可
+                    dis[kx][ky][M][S] = min(dis[kx][ky][M][S],step+1);
+                else                     //没有集齐，继续走
+                    que.push(tmp);
+            }
+            else if(ss[kx][ky] == '.')
+            {
+                tmp.key = key;
+                tmp.S = S;
+                tmp.step = step+1;
+                if(tmp.step &lt; dis[kx][ky][tmp.key][tmp.S])
+                {
+                    dis[kx][ky][tmp.key][tmp.S] = tmp.step;
+                    que.push(tmp);
+                }
+            }
+        }
+    }
+}
+
+int main()
+{
+    int Sx,Ex,Sy,Ey;
+    int i,j;
+    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF &amp;&amp; n+m)
+    {
+        if(n == 1)
+        {
+            puts(&quot;impossible&quot;);
+            continue;
+        }
+        snake.clear();
+        Stot = 0;
+        M = m+1;
+        for(i=0;i&lt;n;i++)
+        {
+            scanf(&quot;%s&quot;,ss[i]);
+            for(j=0;j&lt;n;j++)
+            {
+                if(ss[i][j] == 'K')
+                    Sx = i,Sy = j, ss[i][j] = '.';
+                else if(ss[i][j] == 'T')
+                    Ex = i,Ey = j, ss[i][j] = '$';
+                else if(ss[i][j] == 'S')
+                    snake[make_pair(i,j)] = ++Stot;
+            }
+        }
+        node tmp;
+        tmp.x = Sx,tmp.y = Sy,tmp.key = 0,tmp.step = 0,tmp.S = 0;
+        memset(dis,INF,sizeof(dis));
+        dis[Sx][Sy][0][0] = 0;
+        bfs(tmp);
+        int mini = INF;
+        for(i=0;i&lt;(1&lt;&lt;Stot);i++)
+            mini = min(mini,dis[Ex][Ey][M][i]);
+        if(mini == INF)
+            puts(&quot;impossible&quot;);
+        else
+            printf(&quot;%d\n&quot;,mini);
+    }
+    return 0;
+}
+
+</code></pre>
+
+<h1><a style="display: block;" name="图论" href="#图论"></a>图论</h1>
+
+<h2><a style="display: block;" name="欧拉回路-哈密顿回路" href="#欧拉回路-哈密顿回路"></a>欧拉回路 哈密顿回路</h2>
+
+<h3>判断存在</h3>
+
+<p>判断欧拉通路：</p>
+
+<blockquote>
+<ol>
+<li>一个有向图存在欧拉回路必定也存在欧拉通路&hellip;因为通路的定义包括了回路</li>
+<li>不考虑为欧拉回路的情况..一个有向图是欧拉通路就必须有一个点出度-入度=1,一个点入度-出度=1..这两点就是欧拉通路的起点和终点..并且该图连通</li>
+<li>我自己加一条，其实是对2的理解：入读-出度&gt;1 时直接return false ，排除 a-&gt;b a-&gt;c 这种情况</li>
+</ol>
+</blockquote>
+
+<p>判断欧拉回路：</p>
+
+<blockquote>
+<p>无向图是欧拉图的充要条件是所有点的度为偶数并且所有点联通<br />
+有向图是欧拉图的充要条件是所有点的入度=出度..并且联通&hellip;</p>
+</blockquote>
+
+<p>判断连通:</p>
+
+<blockquote>
+<ol>
+<li>dfs遍历，这里有一份参考代码不过我一直怀疑其正确性。因为你无法确定有向图的起点，比如 a-&gt;b-&gt;c 如果你从b点开始搜的话就会悲催，但是你不知道b点上面还有没有点。</li>
+<li>并查集，并查集的方便之处不用废话。但是在图论中两点之间有多条边时需要注意一些细节的处理。</li>
+</ol>
+</blockquote>
+
+<p>关于判断入读出度:</p>
+
+<blockquote>
+<p>一种办法是分别记录 in[] out[]
+我用的办法是一个数组：sz[x]++ 表示拉出一条边，sz[x]&ndash;表示走来一条边，sz[x]==1 sz[x]==-1 就是上面的两种情况</p>
+</blockquote>
+
+<h4>@ UVa 10129 Play on Words</h4>
+
+<pre><code class="cpp">/*
+题意就是给你一堆单词，按首位顺序排列起来，问你有没有解。
+第一眼看上去是个哈密顿通路，单词当做节点，首尾关系作边，听上去妥妥的不过N有100000 复杂度太恐怖。
+其实是从刘汝佳的小白书第二版（其实该叫小紫红书了）上欧拉回路那节看到的，所以得考虑考虑转换
+把单词当边，首尾字符当做点 题目就转变为 欧拉通路
+*/
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#define N 101010
+using namespace std;
+
+int sz[333];
+int fa[333];
+bool ok[333];   //  数据中使用到的单词
+int n, T;
+
+int getfa(int v)
+{
+    if ( fa[v] == v ) return v;
+    return fa[v] = getfa(fa[v]);
+}
+
+void init()
+{
+    memset(ok, 0, sizeof(ok));
+    memset(sz, 0, sizeof(sz));
+    cin &gt;&gt; n;
+    string a;
+    for ( int i('a'); i &lt;= 'z'; i++) fa[i] = i;
+    for ( int i(1); i &lt;= n; i++)
+    {
+        cin &gt;&gt; a;
+        int x = a[0], y = a[a.size() - 1];
+        fa[getfa(x)] = getfa(y);
+        ok[x] = ok[y] = true;
+        sz[x]++;
+        sz[y]--;
+    }
+}
+
+bool check()
+{
+    int tf = 0 , i;
+    for ( i = 'a'; i &lt;= 'z'; i++)
+    {
+        if (ok[i])
+        {
+            if ( !tf ) tf = getfa(i);
+            else if ( getfa(i) != tf ) return false;        //  不连通
+        }
+    }
+
+    int c1 = 0, c2 = 0;
+    for ( int i('a'); i &lt;= 'z'; i++)
+    {
+        if (!ok[i]) continue;
+        if ( sz[i] == 0 ) continue;
+        else if ( sz[i] == 1 ) c1++;
+        else if ( sz[i] == -1) c2++;
+        else return false;              //  其它乱七八糟的情况 比如 ab ab out[a]=2 in[b]=2 
+    }
+
+    if ( (c1 == 1 &amp;&amp; c2 == 1) || (c1 == 0 &amp;&amp; c2 == 0) ) //  单向路径 or 回路
+        return true;
+    else
+        return false;
+}
+
+int main()
+{
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    for ( cin &gt;&gt; T; T--; )
+    {
+        init();
+        if (check())
+            cout &lt;&lt; &quot;Ordering is possible.&quot; &lt;&lt; endl;
+        else
+            cout &lt;&lt; &quot;The door cannot be opened.&quot; &lt;&lt; endl;
+    }
+}
+</code></pre>
+
+<h2><a style="display: block;" name="二分图最大匹配" href="#二分图最大匹配"></a>二分图最大匹配</h2>
+
+<h4>@ POJ 3041 Asteroids 匈牙利算法</h4>
+
+<pre><code class="cpp">/*
+看起来像个 DP 神马的。竟然是二分图匹配。。
+看着啊，行与行之间相互独立，一个行可以就炸掉很多列。（列的道理一样），如果替换一些字。
+       点与点之间相互独立，一个点就可以炸掉很多边。
+so，可以把行列看成一个点，把一个炸弹看成一条边，然后题目就转换城了最小点击覆盖（即最大匹配）。
+
+这个题的思路就是上面说的，每一个炸弹（x，y）看做一条边，两个端点就是它的行列x 和 y。任意炸掉x y期中一个点都可以把可以把这条边炸掉。跟题目一样了。
+就这么神奇。。
+*/
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+const int N = 555;
+int n, m, g[N][N], chk[N], match[N];
+
+int dfs(int v){
+    int t;
+    for ( int i = 1; i &lt;= n; i++){
+        if ( g[i][v] &amp;&amp; !chk[i] ){
+            chk[i] = 1;
+            t = match[i];
+            match[i] = v;
+            if ( t == -1 || dfs(t) ) return 1;
+            match[i] = t;
+        }
+    }
+    return 0;
+}
+
+int main(){
+    while ( ~scanf(&quot;%d%d&quot;, &amp;n ,&amp;m) ){
+        memset(g, 0, sizeof(g));
+        while ( m-- ){
+            int a, b;
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            g[a][b] = 1;
+        }
+        int ans = 0;
+        memset(match, 255, sizeof(match));
+        for ( int i = 1; i &lt;= n; i++){
+            memset( chk, 0, sizeof(chk));
+            ans += dfs(i);
+        }
+        printf(&quot;%d\n&quot;, ans);
+    }
+    return 0;
+}
+
+</code></pre>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+        <ul>
+          
+          
+            <li class="prev disabled"><a>&larr; Previous</a></li>
+          
+
+            <li><a href="/archive">Archive</a></li>
+
+          
+            <li class="next"><a href="/Boring Notes/cs203%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/" title="cs203的那点事儿">Next &rarr;</a></li>
+          
+          
+        </ul>
+      </ul>
+    </div>
+    <hr>
+        <div class="">
+          <h4>Categories</h4>
+          <ul class="tag_box">
+          
+            <li>
+  <a href="/categories/#default-ref">default <span>3</span></a>
+</li>
+          
+          </ul>
+          <br>
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          </ul>
+        </div>
+    <hr>
+    
+<div id="disqus_thread"></div>
+<script>
+    var disqus_developer = 1;
+    var disqus_shortname = 'zhrstech'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+  
+  
+</div>
+
+      </div>
+
+      <footer> 
+        <p>&copy; 张慧仁 2013. 
+        Powered by <a href="http://github.com/wendal/gor" target="_blank" title="Gor -- Fast Blog">Gor</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+<script src="//cdnjscn.b0.upaiyun.com/libs/prettify/r298/prettify.min.js"></script>
+<script>
+  var pres = document.getElementsByTagName("pre");
+  for (var i=0; i < pres.length; ++i) {
+    pres[i].className = "prettyprint linenums";
+  }
+  prettyPrint();
+</script>
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-123-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>

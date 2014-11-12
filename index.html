@@ -13,9 +13,9 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="/assets/zhr_twitter/stylesheets/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
-<link href="/assets/zhr_twitter/stylesheets/style.css" type="text/css" rel="stylesheet" media="all">
-<link href="/assets/zhr_twitter/widgets/google_prettify/stylesheets/twitter-bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="/assets/blue/stylesheets/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/blue/stylesheets/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/blue/widgets/google_prettify/stylesheets/twitter-bootstrap.css" type="text/css" rel="stylesheet" media="all">
  
 
     <!-- Le fav and touch icons -->
@@ -81,6 +81,47 @@
     
 
 <div class="post">
+  <h1 class="title"><a href="/default/acmtips/">acmtips</a><span class="date">2014-10-08</span></h1>
+	
+  <p><div></p>
+
+<pre><code>&lt;div id='Directory'&gt;&lt;/div&gt;
+&lt;script&gt;
+
+    var tt = [&quot;&quot;, &quot;一&quot;, &quot;二&quot;, &quot;三&quot;, &quot;四&quot;, &quot;五&quot;, &quot;六&quot;, &quot;七&quot;, &quot;八&quot;, &quot;九&quot;, &quot;十&quot;];
+    var tq = [&quot;&quot;, &quot;①&quot;, &quot;②&quot;, &quot;③&quot;, &quot;④&quot;, &quot;⑤&quot;, &quot;⑥&quot;, &quot;⑦&quot;, &quot;⑧&quot;, &quot;⑨&quot;, &quot;⑩&quot;];
+
+    window.onload = function(){
+        return;
+        h1 = document.querySelectorAll(&quot;h1&quot;);           h2 = document.querySelectorAll(&quot;h2&quot;);           h3 = document.querySelectorAll(&quot;h3&quot;);           h4 = document.querySelectorAll(&quot;h4&quot;);
+
+        var txt = &quot;&lt;h2&gt; Directory &lt;/h2&gt;&quot;;
+        txt += &quot;&lt;pre&gt;&quot;
+        for ( t1=0; t1&lt;h1.length; t1++ ){
+            txt += &quot;&lt;h3&gt;&quot; + (tt[t1+1]) + &quot;.&quot; + h1[t1].innerHTML + &quot;&lt;/h3&gt;&quot;;
+            for ( t2=0; t2&lt;h2.length; t2++ ) if (h2[t2].offsetTop &gt; h1[t1].offsetTop &amp;&amp; ( t1==h1.length-1 ||  h2[t2].offsetTop &lt; h1[t1+1].offsetTop )) {
+                txt += &quot;&lt;h4&gt;   &quot; + (t2+1) + &quot;. &quot; + h2[t2].innerHTML + &quot;&lt;/h4&gt;&quot;;
+                for (t3=0; t3&lt;h3.length; t3++ ) if (h3[t3].offsetTop &gt; h2[t2].offsetTop &amp;&amp; ( t2==h2.length-1 ||  h3[t3].offsetTop &lt; h2[t2+1].offsetTop )) {
+                    txt += &quot;&lt;h5&gt;       &quot; + (t3+1) + &quot;) &quot; + h3[t3].innerHTML + &quot;&lt;/h5&gt;&quot;;
+                    for ( t4=0; t4&lt;h4.length; t4++ ) if (h4[t4].offsetTop &gt; h3[t3].offsetTop &amp;&amp; ( t3==h3.length-1 ||  h4[t4].offsetTop &lt; h3[t3+1].offsetTop )) {
+                        txt += &quot;         | &quot; + h4[t4].innerHTML + &quot;\n&quot;;
+                    }
+                }
+            }
+        }
+        txt += &quot;&lt;/pre&gt;&quot;;
+        document.getElementById(&quot;Directory&quot;).innerHTML = txt;
+    }
+&lt;/script&gt;
+</code></pre>
+
+
+  <div class="more">
+    <a  href="/default/acmtips/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
   <h1 class="title"><a href="/Boring Notes/cs203%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/">cs203的那点事儿</a><span class="date">2014-07-02</span></h1>
 	
   <p>这篇文章有三个标签<code>LXMP</code> <code>Go</code> <code>HUSTOJ</code>，在我接管服务器以前，这三个东西我是一个也不知道的，靠着自己的不懈折腾，时隔大半年，收获颇丰。今夜不眠，拿出来聊聊。</p>
@@ -144,10 +185,6 @@
 	
   <p>爱生活，爱思考</p>
 
-<blockquote>
-<p>诚实的讲，这里目前只是我的技术博客，其他杂七杂八的详见 <a href="http://112.124.116.19/">here</a></p>
-</blockquote>
-
 <h2><a style="display: block;" name="兴趣爱好" href="#兴趣爱好"></a>兴趣爱好</h2>
 
 <ul>
@@ -162,6 +199,13 @@
 </ul>
 
 <h2><a style="display: block;" name="社交网络" href="#社交网络"></a>社交网络</h2>
+
+<ul>
+<li><a href="http://weibo.com/u/2409424241">Weibo</a></li>
+<li><a href="https://www.facebook.com/nian.lao">Facebook</a></li>
+<li><a href="https://github.com/micln">Github</a></li>
+<li><a href="https://coding.net/u/kzzhr">Coding.net</a></li>
+</ul>
 
 
   <div class="more">
