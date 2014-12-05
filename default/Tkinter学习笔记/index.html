@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0">
+    <title>Tkinter学习笔记</title>
+  
+    <meta name="author" content="张慧仁">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/blue/stylesheets/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/blue/stylesheets/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/blue/widgets/google_prettify/stylesheets/twitter-bootstrap.css" type="text/css" rel="stylesheet" media="all">
+ 
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">zhr&#39;sTech</a>
+          <ul class="nav">
+            
+              
+
+
+  <li><a href="/archive">Archive</a></li>
+
+
+            
+              
+
+
+  <li><a href="/tags">Tags</a></li>
+
+
+            
+              
+
+
+  <li><a href="/categories">Categories</a></li>
+
+
+            
+              
+
+
+  <li><a href="/about">About Me</a></li>
+
+
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+  <h1><span>Tkinter学习笔记 </span><span class='date'>2014-12-01</span></h1>
+  
+</div>
+
+<div class="row" style="margin-left:0px;padding: 20px;">
+  <div class="">
+    <h2><a style="display: block;" name="什么是tkinter" href="#什么是tkinter"></a>什么是Tkinter</h2>
+
+<p>Tkinter（也叫Tk接口）是Tk图形用户界面工具包标准的Python接口。Tk是一个轻量级的跨平台图形用户界面（GUI）开发工具。Tk和Tkinter可以运行在大多数的Unix平台、Windows、和Macintosh系统。
+Tkinter 由一定数量的模块组成。Tkinter位于一个名为_tkinter（较早的版本名为tkinter）的二进制模块中 。Tkinter包含了对Tk的低 级接口模块，低级接口并不会被应用级程序员直接使用，通常是一个共享库（或DLL），但是在一些情况下它也被Python解释器静态链接。
+除了Tk接口模块，Tkinter也包含了一定数量的Python模块。其中两个最重要的模块是Tkinter本身和名为Tkconstants的模块。前者自动引导后者，因此使用Tkinter，你首先需要做的是导入Tkinter模块，
+代码如下：
+import Tkinter
+或
+from Tkinter import *</p>
+
+<h3>第一个Tkinter程序</h3>
+
+<p>File: hello1.py</p>
+
+<pre><code class="python">from Tkinter import *
+
+root = Tk()
+
+w = Label(root, text=&quot;Hello, world!&quot;)
+w.pack()
+
+root.mainloop()
+</code></pre>
+
+<p>运行结果如下：
+转-Tkinter入门(一)
+关闭这个窗口即可终止这个程序的运行。</p>
+
+<p>二、对代码的说明：</p>
+
+<p>我们通过导入Tkinter模块开始。Tkinter模块包含了用Tk工具包工作所需的所有的类，函数和其它一些必须的东西。在大多数情况下，你只需要简单的从Tkinter导入所有的东西到你的模块的名字空间，如下所示：
+from Tkinter import *</p>
+
+<p>然 后初始化Tkinter,方法是我们必须先创建一个Tk root（根）窗口部件，它是一个普通的窗口，带有标题条和其它由你的窗口管理器供给的附属。你 应该只创建一个root窗口部件，这个root窗口部件必须在其它窗口部件创建之前创建。初始化Tkinter的代码如下：</p>
+
+<pre><code class="python">root = Tk()
+</code></pre>
+
+<p>接着我们创建一个Label（标签）窗口部件作为这个root窗口的孩子，代码如下：</p>
+
+<pre><code class="python">w = Label(root, text=&quot;Hello, world!&quot;)
+</code></pre>
+
+<p>Label窗口部件可以显示文本、图标或图象。我们这里用text选项来指定要显示的文本。</p>
+
+<p>接下来我们在Label窗口部件上调用了pack方法，它告诉Label窗口部件去调整自己的尺寸来适应所给定文本的大小，并且使用自己可见，代码如下：</p>
+
+<pre><code class="python">w.pack()
+</code></pre>
+
+<p>但是在这些发生之前，我们必须进入Tkinter的事件循环，代码如下：</p>
+
+<pre><code class="python">root.mainloop()
+</code></pre>
+
+<p>这 个程序将一直处在事件循环之中，直到我们关闭了这个窗口。事件循环不仅仅处理来自用户的事件（如鼠标敲击和按键按下）或者窗口系统（重绘事件和窗口配置消 息），它也处理来自Tkinter自身的工作等待队列，这些工作之一就包括由pack方法所产生的工作和显示更新。这就意味着这个应用程序窗口在进入这个 事件循环之前将不会显示出来。</p>
+
+<h3>第二个Tkinter程序</h3>
+
+<p>当我们在写一个较大的程序的时候，把代码封装在类中通常是一个好的主意。</p>
+
+<p>File: hello2.py</p>
+
+<pre><code class="python">from Tkinter import *
+
+class App:
+
+    def __init__(self, master):
+
+        frame = Frame(master)
+        frame.pack()
+
+        self.button = Button(frame, text=&quot;QUIT&quot;, fg=&quot;red&quot;, command=frame.quit)
+        self.button.pack(side=LEFT)
+
+        self.hi_there = Button(frame, text=&quot;Hello&quot;, command=self.say_hi)
+        self.hi_there.pack(side=LEFT)
+
+    def say_hi(self):
+        print &quot;hi there, everyone!&quot;
+
+root = Tk()
+
+app = App(root)
+
+root.mainloop()
+</code></pre>
+
+<p>运行结果如下：
+转-Tkinter入门(一)
+如果你点击Hello按钮，将在控制台打印出&rdquo;hi there, everyone!&rdquo; 。如果你点击QUIT按钮，程序将终止。</p>
+
+<p>二、代码说明：</p>
+
+<p>这个简单的应用程序被写成了一个类。这个构造器（<strong>init</strong> 方法）通过一个父部件被调用，并针对父部件增加了一些子部件。构造器通过创建一个Frame（帧）窗口部件开始。一个帧是一个简单的容器，在这个例子中，我们仅用来容纳另外的两个部件。</p>
+
+<pre><code class="python">class App:
+    def __init__(self, master):
+        frame = Frame(master)
+        frame.pack()
+
+</code></pre>
+
+<p>这个帧实例被存储在一个名为Frame的局部变量中。在创建了这个部件后，我们立即调用pack方法来使用这个帧可见。</p>
+
+<p>然后我们创建两个Button（按钮）窗口部件作为这个帧的孩子。</p>
+
+<pre><code class="python">self.button = Button(frame, text=&quot;QUIT&quot;, fg=&quot;red&quot;, command=frame.quit)
+self.button.pack(side=LEFT)
+
+self.hi_there = Button(frame, text=&quot;Hello&quot;, command=self.say_hi)
+self.hi_there.pack(side=LEFT)
+</code></pre>
+
+<p>这次，我们传递了一定数量的选项给构造器。第一个按钮被标为&rdquo;QUIT&rdquo;，字为红色（fg是foreground&lt;前景色&gt;的缩写）。第二个被标为&rdquo;Hello&rdquo;。两个按钮都有一个command选项。这个选项指定了一个函数或方法，在按钮被点击时会被调用。</p>
+
+<p>按 钮实例被存储在实例属性组中。side=LEFT 参数表示这两个按钮在帧中将被分开放置；第一个按钮被放置在帧的左边缘，第二个被放在第一个的右边（帧 的左边缘仍保留着空格）。默认情况下，部件的放置都是相对于它们的父亲（frame部件相对于master，button相对于frame）。如果 side选项没指定，side默认值为TOP。</p>
+
+<p>&ldquo;Hello&rdquo;按钮的回调函数如下所示，它在按钮每次被按下时简单地打印一条信息给控制台：</p>
+
+<pre><code class="python">def say_hi(self):
+    print &quot;hi there, everyone!&quot;
+</code></pre>
+
+<p>最后我们提供了一些脚本级的代码来创建一个Tk root部件，和一个App类的实例（这个实例使用这个root部件作为它的父亲）：</p>
+
+<pre><code class="python">root = Tk()
+
+app = App(root)
+
+root.mainloop()
+</code></pre>
+
+<p>root.mainloop()调用root部件的mainloop方法。它进入Tk事件循环，这个应用程序将处于这个Tk事件循环之中直到quit方法被调用（点击QUIT按钮），或窗口被关闭。</p>
+
+<p>关于窗口部件引用</p>
+
+<p>在第二个例子中，frame部件被存储在一个名为frame的局部变量中，而button部件则存储在两个实例的属性组中。这是否隐藏着一个严重的问题呢：当 <strong>init</strong> 函数返回并且frame变量超出了范围会发生什么呢？。</p>
+
+<p>不 要紧；这儿确实没有必要去保持对窗口部件实例的引用。Tkinter自动维护一个窗口部件树（通过对象实例的master和children属性），因 此，当应用程序的最后一个引用消失时窗口部件不会消失；窗口部件必须显示的用destroy方法销毁。但是如果你希望在窗口部件被创建以后用它来做一些事 情，你最好保持对你自己的窗口部件实例的引用。</p>
+
+<p>注意如果你不需要保持对一个窗口部件的引用，你可以用单独的一行来创建和pack（包装）它，如下：</p>
+
+<pre><code class="python">Button(frame, text=&quot;Hello&quot;, command=self.hello).pack(side=LEFT)
+</code></pre>
+
+<p>不要存储这个操作的结果，当你试图去用这个结果时你会很失望（因为pack方法返回None）。为小心起见，最好将将pack（包装）分开，如下所示：</p>
+
+<pre><code class="python">w = Button(frame, text=&quot;Hello&quot;, command=self.hello) 
+w.pack(side=LEFT)
+</code></pre>
+
+<p>关于窗口部件的名字</p>
+
+<p>另一个容量引起混淆的方面（尤其是使用Tcl编程Tk的有一些经验的人）是Tinter的窗口部件的名字的概念。在Tcl中，你必须显示的命名每一个窗口 部件。例如下面的Tcl命令创建一个名为ok的按钮作为名为dialog的窗口部件的孩子（dialog又是root窗口的孩子）：</p>
+
+<pre><code class="python">button .dialog.ok
+</code></pre>
+
+<p>相应的Tkinter调用将如下：
+ok = Button(dialog)
+在 这个Tkinter案例中，ok和dialog是对窗口部件实例的引用，不是窗口部件实际的名字。因为Tk自身需要这些名字，Tkinter自动为每个新 窗口部件赋一个唯一的名字。在这个Tkinter案例中，这个dialog的名字或许类似&rdquo;.1428748&rdquo;，并且button可能 是&rdquo;.1428748.1432920&rdquo;。如果你希望得到一个Tkinter窗口部件的完整名字，你可以在这个窗口部件实例上使用str函数：</p>
+
+<pre><code class="python">&gt;&gt;&gt; print str(ok)
+.1428748.1432920
+</code></pre>
+
+<p>如果你确实需要为一个窗口部件指定一个名字，你可以在你创建这个窗口部件时使用name选项。你这么做的原因可能是你需要和用Tcl写的代码接口。</p>
+
+<p>下面的例子将产生一个名为&rdquo;.dialog.ok&rdquo;的窗口部件（如果你忘了命名dialog,那么名字可能类似&rdquo;.1428748.ok&rdquo;）：
+ok = Button(dialog, name=&ldquo;ok&rdquo;)</p>
+
+<p>为了避免与此同时Tkinter的名字机制相冲突，不要使用只包含数字的名字。同样注意name是只能创建一次的选项；一旦你创建了这个部件的名字，那么你就不能再改变它的名字了。</p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+        <ul>
+          
+            <li class="prev"><a href="/default/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" title="python爬虫基础">&larr; Previous</a></li>
+          
+          
+
+            <li><a href="/archive">Archive</a></li>
+
+          
+            <li class="next"><a href="/default/python%E4%B8%8A%E6%89%8B%E6%8C%87%E5%8D%97/" title="python上手指南">Next &rarr;</a></li>
+          
+          
+        </ul>
+      </ul>
+    </div>
+    <hr>
+        <div class="">
+          <h4>Categories</h4>
+          <ul class="tag_box">
+          
+            <li>
+  <a href="/categories/#default-ref">default <span>6</span></a>
+</li>
+          
+          </ul>
+          <br>
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+            <li>
+  <a href="/tags/#Python-ref">Python <span>3</span></a>
+</li>
+          
+            <li>
+  <a href="/tags/#GUI-ref">GUI <span>1</span></a>
+</li>
+          
+          </ul>
+        </div>
+    <hr>
+    
+<div id="disqus_thread"></div>
+<script>
+    var disqus_developer = 1;
+    var disqus_shortname = 'zhrstech'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+  
+  
+</div>
+
+      </div>
+
+      <footer> 
+        <p>&copy; 张慧仁 2013. 
+        Powered by <a href="http://github.com/wendal/gor" target="_blank" title="Gor -- Fast Blog">Gor</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+<script src="//cdnjscn.b0.upaiyun.com/libs/prettify/r298/prettify.min.js"></script>
+<script>
+  var pres = document.getElementsByTagName("pre");
+  for (var i=0; i < pres.length; ++i) {
+    pres[i].className = "prettyprint linenums";
+  }
+  prettyPrint();
+</script>
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-123-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>

@@ -4,8 +4,18 @@
 		<loc>http://dashayu.tk/</loc>
 	</url>
 	<url>
-		<loc>http://dashayu.tk/default/acmtips/</loc>
-		<lastmod>2014-10-08</lastmod>
+		<loc>http://dashayu.tk/default/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/</loc>
+		<lastmod>2014-12-02</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://dashayu.tk/default/Tkinter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+		<lastmod>2014-12-01</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://dashayu.tk/default/python%E4%B8%8A%E6%89%8B%E6%8C%87%E5%8D%97/</loc>
+		<lastmod>2014-11-27</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
@@ -14,7 +24,7 @@
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-		<loc>http://dashayu.tk/default/mactips/</loc>
+		<loc>http://dashayu.tk/default/Mac---tips/</loc>
 		<lastmod>2014-07-01</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
@@ -31,6 +41,11 @@
 	<url>
 		<loc>http://dashayu.tk/2013/new-born.html</loc>
 		<lastmod>2013-02-08</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://dashayu.tk/default/acmtips/</loc>
+		<lastmod>2012-10-08</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 </urlset>

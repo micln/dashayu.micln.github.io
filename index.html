@@ -81,43 +81,77 @@
     
 
 <div class="post">
-  <h1 class="title"><a href="/default/acmtips/">acmtips</a><span class="date">2014-10-08</span></h1>
+  <h1 class="title"><a href="/default/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/">python爬虫基础</a><span class="date">2014-12-02</span></h1>
 	
-  <p><div></p>
+  <h3>基本的抓取</h3>
 
-<pre><code>&lt;div id='Directory'&gt;&lt;/div&gt;
-&lt;script&gt;
+<pre><code class="python">import urllib
+content = urllib.urlopen('http://www.x.com').read()
+</code></pre>
 
-    var tt = [&quot;&quot;, &quot;一&quot;, &quot;二&quot;, &quot;三&quot;, &quot;四&quot;, &quot;五&quot;, &quot;六&quot;, &quot;七&quot;, &quot;八&quot;, &quot;九&quot;, &quot;十&quot;];
-    var tq = [&quot;&quot;, &quot;①&quot;, &quot;②&quot;, &quot;③&quot;, &quot;④&quot;, &quot;⑤&quot;, &quot;⑥&quot;, &quot;⑦&quot;, &quot;⑧&quot;, &quot;⑨&quot;, &quot;⑩&quot;];
+<h3>使用代理服务器</h3>
 
-    window.onload = function(){
-        return;
-        h1 = document.querySelectorAll(&quot;h1&quot;);           h2 = document.querySelectorAll(&quot;h2&quot;);           h3 = document.querySelectorAll(&quot;h3&quot;);           h4 = document.querySelectorAll(&quot;h4&quot;);
-
-        var txt = &quot;&lt;h2&gt; Directory &lt;/h2&gt;&quot;;
-        txt += &quot;&lt;pre&gt;&quot;
-        for ( t1=0; t1&lt;h1.length; t1++ ){
-            txt += &quot;&lt;h3&gt;&quot; + (tt[t1+1]) + &quot;.&quot; + h1[t1].innerHTML + &quot;&lt;/h3&gt;&quot;;
-            for ( t2=0; t2&lt;h2.length; t2++ ) if (h2[t2].offsetTop &gt; h1[t1].offsetTop &amp;&amp; ( t1==h1.length-1 ||  h2[t2].offsetTop &lt; h1[t1+1].offsetTop )) {
-                txt += &quot;&lt;h4&gt;   &quot; + (t2+1) + &quot;. &quot; + h2[t2].innerHTML + &quot;&lt;/h4&gt;&quot;;
-                for (t3=0; t3&lt;h3.length; t3++ ) if (h3[t3].offsetTop &gt; h2[t2].offsetTop &amp;&amp; ( t2==h2.length-1 ||  h3[t3].offsetTop &lt; h2[t2+1].offsetTop )) {
-                    txt += &quot;&lt;h5&gt;       &quot; + (t3+1) + &quot;) &quot; + h3[t3].innerHTML + &quot;&lt;/h5&gt;&quot;;
-                    for ( t4=0; t4&lt;h4.length; t4++ ) if (h4[t4].offsetTop &gt; h3[t3].offsetTop &amp;&amp; ( t3==h3.length-1 ||  h4[t4].offsetTop &lt; h3[t3+1].offsetTop )) {
-                        txt += &quot;         | &quot; + h4[t4].innerHTML + &quot;\n&quot;;
-                    }
-                }
-            }
-        }
-        txt += &quot;&lt;/pre&gt;&quot;;
-        document.getElementById(&quot;Directory&quot;).innerHTML = txt;
-    }
-&lt;/script&gt;
+<pre><code class="python">proxy = urllib2.ProxyHandler({'http':'http://host:port'}) 
+opener = urllib2.build_opener(proxy, urllib2.HTTPHandler) 
+urllib2.install_opener(opener) 
+content = urllib2.urlopen('http://www.xxxx.com').read()
 </code></pre>
 
 
   <div class="more">
-    <a  href="/default/acmtips/" class="btn">read more..</a>
+    <a  href="/default/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
+  <h1 class="title"><a href="/default/Tkinter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Tkinter学习笔记</a><span class="date">2014-12-01</span></h1>
+	
+  <h2><a style="display: block;" name="什么是tkinter" href="#什么是tkinter"></a>什么是Tkinter</h2>
+
+<p>Tkinter（也叫Tk接口）是Tk图形用户界面工具包标准的Python接口。Tk是一个轻量级的跨平台图形用户界面（GUI）开发工具。Tk和Tkinter可以运行在大多数的Unix平台、Windows、和Macintosh系统。
+Tkinter 由一定数量的模块组成。Tkinter位于一个名为_tkinter（较早的版本名为tkinter）的二进制模块中 。Tkinter包含了对Tk的低 级接口模块，低级接口并不会被应用级程序员直接使用，通常是一个共享库（或DLL），但是在一些情况下它也被Python解释器静态链接。
+除了Tk接口模块，Tkinter也包含了一定数量的Python模块。其中两个最重要的模块是Tkinter本身和名为Tkconstants的模块。前者自动引导后者，因此使用Tkinter，你首先需要做的是导入Tkinter模块，
+代码如下：
+import Tkinter
+或
+from Tkinter import *</p>
+
+<h3>第一个Tkinter程序</h3>
+
+<p>File: hello1.py</p>
+
+
+  <div class="more">
+    <a  href="/default/Tkinter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
+  <h1 class="title"><a href="/default/python%E4%B8%8A%E6%89%8B%E6%8C%87%E5%8D%97/">python上手指南</a><span class="date">2014-11-27</span></h1>
+	
+  <h2><a style="display: block;" name="资源列表：" href="#资源列表："></a>资源列表：</h2>
+
+<h3>python</h3>
+
+<ul>
+<li><a href="http://woodpecker.org.cn/abyteofpython_cn/chinese/">简明 Python 教程</a> 浅显易懂，快速上手</li>
+<li><a href="http://www.cnblogs.com/vamei/archive/2012/09/13/2682778.html">Python快速教程</a> 全。不过对新手会有点鸭梨</li>
+<li><a href="http://www.fenby.com/course/list/1022">fenby</a> 边学边练</li>
+<li><a href="http://study.163.com/course/courseMain.htm?courseId=302001">一些可能会用到的模块</a> 网易公开课</li>
+<li><a href="https://github.com/qiwsir/ITArticles/blob/master/BasicPython/index.md">零基础学Python - 老齐</a> 东西很全。缺点是太多啰嗦，基础部分适合文科生</li>
+</ul>
+
+<h3>dajango</h3>
+
+<ul>
+<li><a href="http://study.163.com/course/courseMain.htm?courseId=320022">【网易公开课】快速上手</a> 一个下午熟悉 Dajango</li>
+</ul>
+
+<h3>博客</h3>
+
+
+  <div class="more">
+    <a  href="/default/python%E4%B8%8A%E6%89%8B%E6%8C%87%E5%8D%97/" class="btn">read more..</a>
   </div>
 </div>
 
@@ -145,7 +179,7 @@
 </div>
 
 <div class="post">
-  <h1 class="title"><a href="/default/mactips/">mactips</a><span class="date">2014-07-01</span></h1>
+  <h1 class="title"><a href="/default/Mac---tips/">Mac - tips</a><span class="date">2014-07-01</span></h1>
 	
   <h3>网络服务</h3>
 
@@ -153,7 +187,7 @@
 
 
   <div class="more">
-    <a  href="/default/mactips/" class="btn">read more..</a>
+    <a  href="/default/Mac---tips/" class="btn">read more..</a>
   </div>
 </div>
 
@@ -234,6 +268,47 @@
 
   <div class="more">
     <a  href="/2013/new-born.html" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
+  <h1 class="title"><a href="/default/acmtips/">acmtips</a><span class="date">2012-10-08</span></h1>
+	
+  <p><div></p>
+
+<pre><code>&lt;div id='Directory'&gt;&lt;/div&gt;
+&lt;script&gt;
+
+    var tt = [&quot;&quot;, &quot;一&quot;, &quot;二&quot;, &quot;三&quot;, &quot;四&quot;, &quot;五&quot;, &quot;六&quot;, &quot;七&quot;, &quot;八&quot;, &quot;九&quot;, &quot;十&quot;];
+    var tq = [&quot;&quot;, &quot;①&quot;, &quot;②&quot;, &quot;③&quot;, &quot;④&quot;, &quot;⑤&quot;, &quot;⑥&quot;, &quot;⑦&quot;, &quot;⑧&quot;, &quot;⑨&quot;, &quot;⑩&quot;];
+
+    window.onload = function(){
+        return;
+        h1 = document.querySelectorAll(&quot;h1&quot;);           h2 = document.querySelectorAll(&quot;h2&quot;);           h3 = document.querySelectorAll(&quot;h3&quot;);           h4 = document.querySelectorAll(&quot;h4&quot;);
+
+        var txt = &quot;&lt;h2&gt; Directory &lt;/h2&gt;&quot;;
+        txt += &quot;&lt;pre&gt;&quot;
+        for ( t1=0; t1&lt;h1.length; t1++ ){
+            txt += &quot;&lt;h3&gt;&quot; + (tt[t1+1]) + &quot;.&quot; + h1[t1].innerHTML + &quot;&lt;/h3&gt;&quot;;
+            for ( t2=0; t2&lt;h2.length; t2++ ) if (h2[t2].offsetTop &gt; h1[t1].offsetTop &amp;&amp; ( t1==h1.length-1 ||  h2[t2].offsetTop &lt; h1[t1+1].offsetTop )) {
+                txt += &quot;&lt;h4&gt;   &quot; + (t2+1) + &quot;. &quot; + h2[t2].innerHTML + &quot;&lt;/h4&gt;&quot;;
+                for (t3=0; t3&lt;h3.length; t3++ ) if (h3[t3].offsetTop &gt; h2[t2].offsetTop &amp;&amp; ( t2==h2.length-1 ||  h3[t3].offsetTop &lt; h2[t2+1].offsetTop )) {
+                    txt += &quot;&lt;h5&gt;       &quot; + (t3+1) + &quot;) &quot; + h3[t3].innerHTML + &quot;&lt;/h5&gt;&quot;;
+                    for ( t4=0; t4&lt;h4.length; t4++ ) if (h4[t4].offsetTop &gt; h3[t3].offsetTop &amp;&amp; ( t3==h3.length-1 ||  h4[t4].offsetTop &lt; h3[t3+1].offsetTop )) {
+                        txt += &quot;         | &quot; + h4[t4].innerHTML + &quot;\n&quot;;
+                    }
+                }
+            }
+        }
+        txt += &quot;&lt;/pre&gt;&quot;;
+        document.getElementById(&quot;Directory&quot;).innerHTML = txt;
+    }
+&lt;/script&gt;
+</code></pre>
+
+
+  <div class="more">
+    <a  href="/default/acmtips/" class="btn">read more..</a>
   </div>
 </div>
 
