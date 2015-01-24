@@ -4,6 +4,7 @@ html, body {
 }
 .navbar {
   margin-bottom: 0;
+  background: #2B84C3;
 }
 .navbar .container{ 
   width:940px;
@@ -15,20 +16,21 @@ html, body {
   text-align: center; /* center align it with the container */
 }
 
+.nav a {
+  color: #eee !important;
+}
+
+.nav a:hover, .nav a.active {
+  color: #fff !important;
+  background: #2E78C0 !important;
+}
+
 p{
   line-height: 1.7;
 }
 
-/* The white background content wrapper */
 .content {
   background-color: #fff;
-  /*margin: 0 -20px;  negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 0 0 6px 6px;
-     -moz-border-radius: 0 0 6px 6px;
-          border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 8px 7px 9px rgba(214, 214, 215, 0.9), -2px 0 5px rgba(214, 214, 215, 0.9);
-     -moz-box-shadow: 8px 7px 9px rgba(214, 214, 215, 0.9), -2px 0 5px rgba(214, 214, 215, 0.9);
-          box-shadow: 8px 7px 9px rgba(214, 214, 215, 0.9), -2px 0 5px rgba(214, 214, 215, 0.9);
 }
 
 /* Page header tweaks */
